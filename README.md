@@ -3,7 +3,7 @@
 一个用于为应用伪装小米设备的 Magisk/Zygisk 模块，以便于使用 [MiPush](https://github.com/NihilityT/MiPushFramework.git)
 
 ### 下载
-前往 [Release](https://github.com/notxx/MiPushZygisk/releases) 下载
+前往 [Release](https://github.com/wushidia/MiPushZygisk/releases) 下载
 
 ### 配置
 手动编辑 `/data/adb/modules/zygisk_mipushfake/config` 文件

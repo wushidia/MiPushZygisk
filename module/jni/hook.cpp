@@ -18,9 +18,9 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
     } else if (strcmp(key, "ro.product.manufacturer") == 0) { // ro.product.manufacturer=Xiaomi
         hooked_result = env->NewStringUTF("Xiaomi");
     } else if (strcmp(key, "ro.miui.ui.version.name") == 0) { // ro.miui.ui.version.name=V140
-        hooked_result = env->NewStringUTF("V140");
+        hooked_result = env->NewStringUTF("V130");
     } else if (strcmp(key, "ro.miui.ui.version.code") == 0) { // ro.miui.ui.version.code=14
-        hooked_result = env->NewStringUTF("14");
+        hooked_result = env->NewStringUTF("13");
     } else if (strcmp(key, "ro.miui.version.code_time") == 0) { // ro.miui.version.code_time=1658851200
         hooked_result = env->NewStringUTF("1658851200");
     } else if (strcmp(key, "ro.miui.internal.storage") == 0) { // ro.miui.internal.storage=/sdcard/

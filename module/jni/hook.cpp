@@ -31,7 +31,13 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
         hooked_result = env->NewStringUTF("cn");
     } else if (strcmp(key, "ro.vendor.miui.region") == 0) { // ro.vendor.miui.region=CN
         hooked_result = env->NewStringUTF("CN");
-    // 伪装小米15Ultra
+    // 为所有设备伪装小米15Ultra
+    }else if (strcmp(key, "ro.product.vendor.manufacturer") == 0) { // ro.product.vendor.manufacturer=Xiaomi
+        hooked_result = env->NewStringUTF("Xiaomi");
+    }else if (strcmp(key, "ro.product.name") == 0) { // ro.product.name=Xiaomi
+        hooked_result = env->NewStringUTF("Xiaomi");
+    }else if (strcmp(key, "ro.product.vendor.brand") == 0) { // ro.product.vendor.brand=Xiaomi
+        hooked_result = env->NewStringUTF("Xiaomi");
     }else if (strcmp(key, "ro.product.model") == 0) { // ro.product.model=25010PN30C
         hooked_result = env->NewStringUTF("25010PN30C");
     }else if (strcmp(key, "ro.product.device") == 0) { // ro.product.device=xuanyuan
@@ -61,19 +67,45 @@ void hookBuild(JNIEnv *env) {
     jclass build_class = env->FindClass("android/os/Build");
     jstring new_brand = env->NewStringUTF("Xiaomi");
     jstring new_manufacturer = env->NewStringUTF("Xiaomi");
+    jstring new_model = env->NewStringUTF("25010PN30C");
+    jstring new_device = env->NewStringUTF("xuanyuan");
+    jstring new_product = env->NewStringUTF("xuanyuan");
 
+    // Hook BRAND
     jfieldID brand_id = env->GetStaticFieldID(build_class, "BRAND", "Ljava/lang/String;");
     if (brand_id != nullptr) {
         env->SetStaticObjectField(build_class, brand_id, new_brand);
     }
 
+    // Hook MANUFACTURER
     jfieldID manufacturer_id = env->GetStaticFieldID(build_class, "MANUFACTURER", "Ljava/lang/String;");
     if (manufacturer_id != nullptr) {
         env->SetStaticObjectField(build_class, manufacturer_id, new_manufacturer);
     }
 
+    // Hook MODEL
+    jfieldID model_id = env->GetStaticFieldID(build_class, "MODEL", "Ljava/lang/String;");
+    if (model_id != nullptr) {
+        env->SetStaticObjectField(build_class, model_id, new_model);
+    }
+
+    // Hook DEVICE
+    jfieldID device_id = env->GetStaticFieldID(build_class, "DEVICE", "Ljava/lang/String;");
+    if (device_id != nullptr) {
+        env->SetStaticObjectField(build_class, device_id, new_device);
+    }
+
+    // Hook PRODUCT
+    jfieldID product_id = env->GetStaticFieldID(build_class, "PRODUCT", "Ljava/lang/String;");
+    if (product_id != nullptr) {
+        env->SetStaticObjectField(build_class, product_id, new_product);
+    }
+
     env->DeleteLocalRef(new_brand);
     env->DeleteLocalRef(new_manufacturer);
+    env->DeleteLocalRef(new_model);
+    env->DeleteLocalRef(new_device);
+    env->DeleteLocalRef(new_product);
 
     LOGD("hook Build done");
 }

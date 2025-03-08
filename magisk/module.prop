@@ -1,6 +1,6 @@
 id=zygisk_mipushfake
 name=Zygisk - MiPushFake
-version=v1
-versionCode=10000
-author=fei-ke, notXX, Dog_EZ
+version=v2
+versionCode=20000
+author=fei-ke, notXX, Dog_EZ, wushidi
 description=为应用伪装小米设备，以便使用 MiPushFramework

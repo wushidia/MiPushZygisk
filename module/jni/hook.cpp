@@ -17,10 +17,10 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
         hooked_result = env->NewStringUTF("Xiaomi");
     } else if (strcmp(key, "ro.product.manufacturer") == 0) { // ro.product.manufacturer=Xiaomi
         hooked_result = env->NewStringUTF("Xiaomi");
-    } else if (strcmp(key, "ro.miui.ui.version.name") == 0) { // ro.miui.ui.version.name=V130
-        hooked_result = env->NewStringUTF("V130");
-    } else if (strcmp(key, "ro.miui.ui.version.code") == 0) { // ro.miui.ui.version.code=13
-        hooked_result = env->NewStringUTF("13");
+    } else if (strcmp(key, "ro.miui.ui.version.name") == 0) { // ro.miui.ui.version.name=V140
+        hooked_result = env->NewStringUTF("V140");
+    } else if (strcmp(key, "ro.miui.ui.version.code") == 0) { // ro.miui.ui.version.code=14
+        hooked_result = env->NewStringUTF("14");
     } else if (strcmp(key, "ro.miui.version.code_time") == 0) { // ro.miui.version.code_time=1658851200
         hooked_result = env->NewStringUTF("1658851200");
     } else if (strcmp(key, "ro.miui.internal.storage") == 0) { // ro.miui.internal.storage=/sdcard/
@@ -31,6 +31,19 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
         hooked_result = env->NewStringUTF("cn");
     } else if (strcmp(key, "ro.vendor.miui.region") == 0) { // ro.vendor.miui.region=CN
         hooked_result = env->NewStringUTF("CN");
+    // 伪装小米15Ultra
+    }else if (strcmp(key, "ro.product.model") == 0) { // ro.product.model=25010PN30C
+        hooked_result = env->NewStringUTF("25010PN30C");
+    }else if (strcmp(key, "ro.product.device") == 0) { // ro.product.device=xuanyuan
+        hooked_result = env->NewStringUTF("xuanyuan");
+    }else if (strcmp(key, "ro.product.marketname") == 0) { // ro.product.marketname=Xiaomi 15 Ultra
+        hooked_result = env->NewStringUTF("Xiaomi 15 Ultra");
+    } else if (strcmp(key, "ro.mi.os.version.code") == 0) { // ro.mi.os.version.code=2
+        hooked_result = env->NewStringUTF("2");
+    } else if (strcmp(key, "ro.mi.os.version.name") == 0) { // ro.mi.os.version.name=OS2
+        hooked_result = env->NewStringUTF("OS2");
+    } else if (strcmp(key, "ro.mi.os.version.incremental") == 0) { //ro.mi.os.version.incremental=OS2.0.103.0.VOACNXM
+        hooked_result = env->NewStringUTF("OS2.0.103.0.VOACNXM");
 }
 
     env->ReleaseStringUTFChars(keyJ, key);

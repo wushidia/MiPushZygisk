@@ -44,12 +44,6 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
         hooked_result = env->NewStringUTF("xuanyuan");
     }else if (strcmp(key, "ro.product.marketname") == 0) { // ro.product.marketname=Xiaomi 15 Ultra
         hooked_result = env->NewStringUTF("Xiaomi 15 Ultra");
-    } else if (strcmp(key, "ro.mi.os.version.code") == 0) { // ro.mi.os.version.code=2
-        hooked_result = env->NewStringUTF("2");
-    } else if (strcmp(key, "ro.mi.os.version.name") == 0) { // ro.mi.os.version.name=OS2
-        hooked_result = env->NewStringUTF("OS2");
-    } else if (strcmp(key, "ro.mi.os.version.incremental") == 0) { //ro.mi.os.version.incremental=OS2.0.103.0.VOACNXM
-        hooked_result = env->NewStringUTF("OS2.0.103.0.VOACNXM");
 }
 
     env->ReleaseStringUTFChars(keyJ, key);

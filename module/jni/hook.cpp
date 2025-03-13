@@ -17,12 +17,10 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
         hooked_result = env->NewStringUTF("Xiaomi");
     } else if (strcmp(key, "ro.product.manufacturer") == 0) { // ro.product.manufacturer=Xiaomi
         hooked_result = env->NewStringUTF("Xiaomi");
-    } else if (strcmp(key, "ro.miui.ui.version.name") == 0) { // ro.miui.ui.version.name=V140
+    } else if (strcmp(key, "ro.miui.ui.version.name") == 0) { // ro.miui.ui.version.name=V130
         hooked_result = env->NewStringUTF("V130");
-    } else if (strcmp(key, "ro.miui.ui.version.code") == 0) { // ro.miui.ui.version.code=14
+    } else if (strcmp(key, "ro.miui.ui.version.code") == 0) { // ro.miui.ui.version.code=13
         hooked_result = env->NewStringUTF("13");
-    } else if (strcmp(key, "ro.miui.version.code_time") == 0) { // ro.miui.version.code_time=1658851200
-        hooked_result = env->NewStringUTF("1658851200");
     } else if (strcmp(key, "ro.miui.internal.storage") == 0) { // ro.miui.internal.storage=/sdcard/
         hooked_result = env->NewStringUTF("/sdcard/");
     } else if (strcmp(key, "ro.miui.region") == 0) { // ro.miui.region=CN
@@ -30,6 +28,12 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
     } else if (strcmp(key, "ro.miui.cust_variant") == 0) { // ro.miui.cust_variant=cn
         hooked_result = env->NewStringUTF("cn");
     } else if (strcmp(key, "ro.vendor.miui.region") == 0) { // ro.vendor.miui.region=CN
+        hooked_result = env->NewStringUTF("CN");
+    } else if (strcmp(key, "ro.product.locale.region") == 0) { // ro.product.locale.region=cn
+        hooked_result = env->NewStringUTF("CN");
+    } else if (strcmp(key, "ro.product.country.region") == 0) { // ro.product.country.region=CN
+        hooked_result = env->NewStringUTF("CN");
+    } else if (strcmp(key, "persist.sys.country") == 0) { // persist.sys.country=CN
         hooked_result = env->NewStringUTF("CN");
     // 为所有设备伪装小米15Ultra
     }else if (strcmp(key, "ro.product.vendor.manufacturer") == 0) { // ro.product.vendor.manufacturer=Xiaomi
@@ -44,6 +48,21 @@ jstring my_native_get(JNIEnv *env, jclass clazz, jstring keyJ, jstring defJ) {
         hooked_result = env->NewStringUTF("xuanyuan");
     }else if (strcmp(key, "ro.product.marketname") == 0) { // ro.product.marketname=Xiaomi 15 Ultra
         hooked_result = env->NewStringUTF("Xiaomi 15 Ultra");
+    //屏蔽华为特征
+     } else if (strcmp(key, "ro.build.hw_emui_api_level") == 0) { // ro.build.hw_emui_api_level=
+        hooked_result = env->NewStringUTF("");
+    } else if (strcmp(key, "ro.build.version.emui") == 0) { // ro.build.version.emui=
+        hooked_result = env->NewStringUTF("");
+    //屏蔽flyme特征
+    } else if (strcmp(key, "ro.build.flyme.version") == 0) { // ro.build.flyme.version=
+        hooked_result = env->NewStringUTF("");
+    } else if (strcmp(key, "ro.flyme.version.id") == 0) { // ro.flyme.version.id=
+        hooked_result = env->NewStringUTF("");
+    //屏蔽OPPO特征
+    } else if (strcmp(key, "ro.build.version.opporom") == 0) { // ro.build.version.opporom=
+        hooked_result = env->NewStringUTF("");
+    } else if (strcmp(key, "ro.build.version.oplusrom") == 0) { // ro.build.version.oplusrom=
+        hooked_result = env->NewStringUTF("");
 }
 
     env->ReleaseStringUTFChars(keyJ, key);
